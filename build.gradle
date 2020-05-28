@@ -5,17 +5,16 @@ plugins {
     id "org.flywaydb.flyway" version "6.4.3"
 }
 
-group = 'com.example.todos'
-version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '14'
-
 flyway {
-    url = 'jdbc:postgresql://localhost:32771/woz_u_blog'
+    url = 'jdbc:postgresql://localhost:32769/example'
     user = 'postgres'
     password = 'password123'
     outOfOrder = true
 }
 
+group = 'com.example.todos'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '14'
 
 configurations {
     compileOnly {
