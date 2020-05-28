@@ -23,7 +23,6 @@ public class TodoController {
 
     @GetMapping("/{id}")
     public Optional<Todo> getTodo(@PathVariable long id){
-
         return todoRepository.findById(id);
     }
 
@@ -36,21 +35,20 @@ public class TodoController {
     @PutMapping("/{id}")
     public Todo editTodo(@PathVariable long id, @RequestBody Todo todo){
         Todo existingTodo = new Todo();
-        try {
+        try{
             existingTodo = todoRepository.findById(id).orElseThrow();
             existingTodo.setTitle(todo.getTitle());
             existingTodo.setDescription(todo.getDescription());
             existingTodo.setComplete(todo.isComplete());
-
-        } catch(NoSuchElementException e){
+        } catch(NoSuchElementException e) {
             System.out.println(e.getMessage());
             existingTodo = todoRepository.save(todo);
         }
         return existingTodo;
     }
+
     @DeleteMapping("/{id}")
     public void deleteTodo(@PathVariable long id){
         todoRepository.deleteById(id);
     }
-
 }
